@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"kucoin-api-test/sdk"
+	"kucoin-api-demo/sdk"
 	"log"
 	"os"
 	"reflect"
@@ -14,7 +14,7 @@ import (
 
 var (
 	kucoin *sdk.ApiService
-	PATH   = "./config.json.example"
+	PATH   = "./config.json"
 )
 
 func main() {
@@ -23,23 +23,24 @@ func main() {
 	var apiSkipVerifyTls bool
 
 	// read config from json file
-	file, err := ioutil.ReadFile(PATH)
-	if err != nil {
-		log.Fatal("error when read configuration from json file:", err)
-		return
-	}
 	var config ApiConfig
-	// unmarshal config data
-	err = json.Unmarshal(file, &config)
-	if err != nil {
-		log.Fatal("error when unmarshal config from json file:", err)
-		return
+	file, er := ioutil.ReadFile(PATH)
+	if er != nil {
+		log.Println("Failed to read configuration from json file:", er)
+		log.Println("Now please input api information manually.")
+	}else{
+		// unmarshal config data
+		err := json.Unmarshal(file, &config)
+		if err != nil {
+			log.Fatal("error when unmarshal config from json file:", err)
+			return
+		}
 	}
 	// if we have configuration from json file
 	if len(config.ApiBaseURI) > 0 {
 		apiURI = config.ApiBaseURI
 	} else {
-		log.Println("please input api base URI,such as:https://api.kumex.com")
+		log.Println("please input api base URI,such as:https://api.kucoin.com")
 		fmt.Scanf("%s", &apiURI)
 	}
 
@@ -91,6 +92,7 @@ func main() {
 	call(apiMap, apiName, params)
 }
 
+// initial api configuration information from json file.
 type ApiConfig struct {
 	ApiBaseURI       string `json:ApiBaseURI`
 	ApiKey           string `json:ApiKey`
