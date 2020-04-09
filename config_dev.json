@@ -1,8 +1,0 @@
-{
-  "ApiBaseURI":"https://openapi-sandbox.kucoin.com",
-  "ApiKey": "5e86a37f72c02d00067b751f",
-  "ApiSecret": "f430a88e-0528-49ed-a10a-d91ddfc25fba",
-  "ApiPassphrase": "qwe895629",
-  "ApiSkipVerifyTls": false
-}
-

@@ -1,8 +1,0 @@
-{
-  "ApiBaseURI":"https://api.kucoin.com",
-  "ApiKey": "5e8c353c2b35a2000845d980",
-  "ApiSecret": "1dc3973d-b4f6-46b6-9ad8-a383fe6bfea2",
-  "ApiPassphrase": "qwe895629",
-  "ApiSkipVerifyTls": false
-}
-
