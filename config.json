@@ -1,0 +1,7 @@
+{
+  "ApiBaseURI":"",
+  "ApiKey": "",
+  "ApiSecret": "",
+  "ApiPassphrase": "",
+  "ApiSkipVerifyTls": false
+}
