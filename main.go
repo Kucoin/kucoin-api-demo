@@ -14,7 +14,7 @@ import (
 
 var (
 	kucoin *sdk.ApiService
-	PATH   = "./config.json"
+	PATH   = "./config.json.example"
 )
 
 func main() {
