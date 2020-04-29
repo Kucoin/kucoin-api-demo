@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
+	"github.com/kardianos/osext"
 	"io/ioutil"
 	"kucoin-api-demo/sdk"
 	"log"
@@ -14,7 +15,7 @@ import (
 
 var (
 	kucoin *sdk.ApiService
-	PATH   = "./config.json"
+	FILE   = "/config.json"
 )
 
 func main() {
@@ -24,7 +25,8 @@ func main() {
 
 	// read config from json file
 	var config ApiConfig
-	file, er := ioutil.ReadFile(PATH)
+	folderPath, err := osext.ExecutableFolder()
+	file, er := ioutil.ReadFile(folderPath + FILE)
 	if er != nil {
 		log.Println("Failed to read configuration from json file:", er)
 		log.Println("Now please input api information manually.")
@@ -45,21 +47,21 @@ func main() {
 	}
 
 	if len(config.ApiKey) > 0 {
-		apiURI = config.ApiKey
+		apiKey = config.ApiKey
 	} else {
 		log.Println("please input your api key...")
 		fmt.Scanf("%s", &apiKey)
 	}
 
 	if len(config.ApiSecret) > 0 {
-		apiURI = config.ApiSecret
+		apiSecret = config.ApiSecret
 	} else {
 		log.Println("please input your api secret...")
 		fmt.Scanf("%s", &apiSecret)
 	}
 
 	if len(config.ApiPassphrase) > 0 {
-		apiURI = config.ApiPassphrase
+		apiPassphrase = config.ApiPassphrase
 	} else {
 		log.Println("please input your api passphrase...")
 		fmt.Scanf("%s", &apiPassphrase)
